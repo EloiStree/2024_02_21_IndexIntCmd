@@ -19,6 +19,7 @@ public interface I_IndexIntCmdSet
 {
     public void SetIndexInt( int value);
     public void SetCommandInt( int value);
+    public void Set(I_IndexIntCmdGet reference);
 }
 public interface I_IndexIntCmdSetGet : I_IndexIntCmdSet, I_IndexIntCmdGet
 {
@@ -46,6 +47,12 @@ public class IndexIntCmd: I_IndexIntCmdSetGet
     public void SetIndexInt(int value) => m_index = value;
 
     public void SetCommandInt(int value) => m_command = value;
+
+    public void Set(I_IndexIntCmdGet reference)
+    {
+        SetIndexInt(reference.GetIndexInt());
+        SetCommandInt(reference.GetCommandInt());
+    }
 }
 
 [System.Serializable]
@@ -59,12 +66,11 @@ public struct IndexIntCmdStruct: I_IndexIntCmdSetGet
         m_index = index;
         m_command = command;
     }
-    public void Set(I_IndexIntCmdGet valueRef)
+    public void Set(I_IndexIntCmdGet reference)
     {
-        m_index = valueRef.GetIndexInt();
-        m_command = valueRef.GetCommandInt();
+        SetIndexInt(reference.GetIndexInt());
+        SetCommandInt(reference.GetCommandInt());
     }
-
 
     public int GetCommandInt() { return m_command; }
     public int GetIndexInt() { return m_index; }
@@ -88,16 +94,34 @@ public class IndexIntCmdRef : I_IndexIntCmdSetGet
     public void SetIndexInt(int value) => m_value. SetIndexInt( value);
 
     public void SetCommandInt(int value) => m_value.SetCommandInt(  value);
+
+    public void Set(I_IndexIntCmdGet reference)
+    {
+        SetIndexInt(reference.GetIndexInt());
+        SetCommandInt(reference.GetCommandInt());
+    }
 }
 
+public static class IndexIntCmdDelegate
+{
+    public delegate void Interface(I_IndexIntCmdGet intCommandInterface);
+    public delegate void Int(int intCommand);
+}
+public static class IndexIntCmdUnityEvent
+{
+    [System.Serializable]
+    public class Interface : UnityEvent<I_IndexIntCmdGet> { }
+
+    [System.Serializable]
+    public class Int : UnityEvent<int> { }
+}
 
 public class UDPReceiverIndexIntCmdMono : MonoBehaviour
 {
     private UdpClient m_udpClient;
     public int m_listenedPort = 123456;
     public IndexIntCmdStruct m_lastReceivedIndexIntCmd;
-    public IIndexIntCmdEvent m_onSharpIndexInterfaceIntCmd;
-    public delegate void IIndexIntCmdEvent(I_IndexIntCmdGet intCmd);
+    public IndexIntCmdDelegate.Interface m_onSharpIndexInterfaceIntCmd;
 
 
 
