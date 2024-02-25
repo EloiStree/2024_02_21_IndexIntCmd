@@ -104,13 +104,17 @@ public class IndexIntCmdRef : I_IndexIntCmdSetGet
 
 public static class IndexIntCmdDelegate
 {
-    public delegate void Interface(I_IndexIntCmdGet intCommandInterface);
+    public delegate void InterfaceGet(I_IndexIntCmdGet intCommandInterface);
+    public delegate void InterfaceGetSet(I_IndexIntCmdGet intCommandInterface);
     public delegate void Int(int intCommand);
 }
 public static class IndexIntCmdUnityEvent
 {
     [System.Serializable]
-    public class Interface : UnityEvent<I_IndexIntCmdGet> { }
+    public class InterfaceGet : UnityEvent<I_IndexIntCmdGet> { }
+
+    [System.Serializable]
+    public class InterfaceGetSet : UnityEvent<I_IndexIntCmdSetGet> { }
 
     [System.Serializable]
     public class Int : UnityEvent<int> { }
@@ -121,7 +125,7 @@ public class UDPReceiverIndexIntCmdMono : MonoBehaviour
     private UdpClient m_udpClient;
     public int m_listenedPort = 123456;
     public IndexIntCmdStruct m_lastReceivedIndexIntCmd;
-    public IndexIntCmdDelegate.Interface m_onSharpIndexInterfaceIntCmd;
+    public IndexIntCmdDelegate.InterfaceGet m_onSharpIndexInterfaceIntCmd;
 
 
 

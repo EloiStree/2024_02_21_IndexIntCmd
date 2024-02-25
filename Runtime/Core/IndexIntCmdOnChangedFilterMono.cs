@@ -5,7 +5,7 @@ using UnityEngine;
 public class IndexIntCmdOnChangedFilterMono : MonoBehaviour
 {
     public Dictionary<int, int> m_onChangedDictionary = new Dictionary<int, int>();
-    public IndexIntCmdUnityEvent.Interface m_onChanged;
+    public IndexIntCmdUnityEvent.InterfaceGet m_onChanged;
     public void Push(I_IndexIntCmdGet command) {
 
         if (command == null)
@@ -26,4 +26,5 @@ public class IndexIntCmdOnChangedFilterMono : MonoBehaviour
             }
         }
     }
+    
 }

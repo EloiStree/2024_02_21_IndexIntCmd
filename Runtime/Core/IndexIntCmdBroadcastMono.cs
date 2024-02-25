@@ -6,7 +6,7 @@ using UnityEngine;
 public class IndexIntCmdBroadcastMono : MonoBehaviour
 {
 
-    static IndexIntCmdDelegate.Interface m_onCommandInterfaceReceived;
+    static IndexIntCmdDelegate.InterfaceGet m_onCommandInterfaceReceived;
     static IndexIntCmdDelegate.Int m_onCommandIntReceived;
     public void Broadcast(I_IndexIntCmdGet command)
     {
@@ -14,20 +14,20 @@ public class IndexIntCmdBroadcastMono : MonoBehaviour
             return;
 
         if(m_onCommandIntReceived!=null)
-        m_onCommandIntReceived.Invoke(command.GetIndexInt());
+        m_onCommandIntReceived.Invoke(command.GetCommandInt());
 
         if (m_onCommandInterfaceReceived != null)
         m_onCommandInterfaceReceived.Invoke(command);
     }
 
 
-    public static void AddListener(IndexIntCmdDelegate.Interface listener) { m_onCommandInterfaceReceived += listener; }
+    public static void AddListener(IndexIntCmdDelegate.InterfaceGet listener) { m_onCommandInterfaceReceived += listener; }
     public static void AddListener(IndexIntCmdDelegate.Int listener) { m_onCommandIntReceived += listener; }
-    public static void RemoveListener(IndexIntCmdDelegate.Interface listener) { m_onCommandInterfaceReceived -= listener; }
+    public static void RemoveListener(IndexIntCmdDelegate.InterfaceGet listener) { m_onCommandInterfaceReceived -= listener; }
     public static void RemoveListener(IndexIntCmdDelegate.Int listener) { m_onCommandIntReceived -= listener; }
 
 
-    public IndexIntCmdUnityEvent.Interface m_onIntCmdReceivedInterface;
+    public IndexIntCmdUnityEvent.InterfaceGet m_onIntCmdReceivedInterface;
     public IndexIntCmdUnityEvent.Int m_onIntCmdReceivedInt;
 
     private void Awake()
