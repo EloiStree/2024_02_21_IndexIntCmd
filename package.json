@@ -1,0 +1,23 @@
+
+{                                                                                
+  "name": "be.eloistree.indexintcmd",                              
+  "displayName": "Index Integer Command",                        
+  "version": "0.0.1",                         
+  "unity": "2018.1",                             
+  "unityRelease": "",                             
+  "description": "Tool to manage Integer as commands linked to an given Index",                         
+  "keywords": ["Script","Tool"],                       
+  "dependencies":{},     
+  "relatedPackages":{},     
+  "samples" : [],     
+  "author" : {
+"name":"",
+"mail":"",
+"url":""},     
+  "repository":{
+"type":"Git",
+"url":"https://github.com/EloiStree/2024_02_21_IndexIntCmd.git",
+"footprint":"",
+"revision":""},     
+  "category": "Script"                   
+} 
