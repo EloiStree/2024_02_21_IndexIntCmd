@@ -1,10 +1,8 @@
 {
-    "name": "be.eloistree.indexintcmd",
+    "name": "be.elab.indexintcmd",
     "rootNamespace": "",
     "references": [
-        "Unity.Networking.Transport",
-        "be.eloistree.intcmd",
-        "endel.nativewebsocket"
+        "be.elab.intcmd"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

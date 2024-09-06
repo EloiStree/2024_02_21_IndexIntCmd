@@ -1,7 +1,7 @@
 
 {                                                                   
-            "name": "be.eloistree.indexintcmdEditor",          
-    "references": ["be.eloistree.indexintcmd","be.eloistree.intcmd"
+            "name": "be.elab.indexintcmdEditor",          
+    "references": ["be.elab.indexintcmd","be.elab.intcmd"
 ],                                                              
     "optionalUnityReferences": [],                                  
     "includePlatforms": [                                           
